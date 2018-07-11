@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+
          mytext = (TextView)  findViewById(R.id.mytext);
          mytext2 = (TextView)  findViewById(R.id.mytext2);
          mytext3 = (TextView)  findViewById(R.id.mytext3);
@@ -62,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                  // alarmMgr.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
                  //alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP,cal.getTimeInMillis(), pendingIntent);
                  alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +120000, pendingIntent);
-
+                 Toast.makeText(getBaseContext(),"clicked 12000",Toast.LENGTH_SHORT).show();
                  Log.d("sucess","clicked");
 
                }
@@ -92,5 +98,15 @@ public class MainActivity extends AppCompatActivity {
 
        /*
 */
+    }
+
+    @Override
+    protected void onPause() {
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+
+        super.onPause();
     }
 }

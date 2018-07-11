@@ -2,7 +2,6 @@ package srinivasu.alarm_sucess;
 
 
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -11,11 +10,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.PowerManager;
 import android.util.Log;
-import android.view.WindowManager;
 
-import java.util.Calendar;
-
-import static android.content.Context.POWER_SERVICE;
 /**
  * Created by srinivas on 08/07/18.
  */

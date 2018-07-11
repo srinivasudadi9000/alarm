@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="srinivasu.alarm_sucess">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
@@ -19,8 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <service android:name=".BackgroundService" />
+        <service android:name=".BackgroundService_first" />
         <receiver android:name="AlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.SCREEN_ON" />
