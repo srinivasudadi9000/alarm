@@ -5,6 +5,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
@@ -21,6 +22,7 @@ import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
  TextView mytext,mytext2,mytext3;
+ SharedPreferences.Editor sharedPreferences;
      @RequiresApi(api = Build.VERSION_CODES.M)
      @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
          mytext.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-
+                 sharedPreferences = (SharedPreferences.Editor) getSharedPreferences("interval",MODE_PRIVATE).edit();
+                 sharedPreferences.putString("const","60000");
+                 sharedPreferences.commit();
                  AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                  Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
                  PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
@@ -48,14 +52,16 @@ public class MainActivity extends AppCompatActivity {
          mytext2.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-
+                 sharedPreferences = (SharedPreferences.Editor) getSharedPreferences("interval",MODE_PRIVATE).edit();
+                 sharedPreferences.putString("const","120000");
+                 sharedPreferences.commit();
                  AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                  Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
                  PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
                  // cal.add(Calendar.SECOND, 5);
                  // alarmMgr.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
                  //alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP,cal.getTimeInMillis(), pendingIntent);
-                 alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +60000, pendingIntent);
+                 alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +120000, pendingIntent);
 
                  Log.d("sucess","clicked");
 
@@ -64,14 +70,16 @@ public class MainActivity extends AppCompatActivity {
          mytext3.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-
+                 sharedPreferences = (SharedPreferences.Editor) getSharedPreferences("interval",MODE_PRIVATE).edit();
+                 sharedPreferences.putString("const","300000");
+                 sharedPreferences.commit();
                  AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                  Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
                  PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
                  // cal.add(Calendar.SECOND, 5);
                  // alarmMgr.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
                  //alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP,cal.getTimeInMillis(), pendingIntent);
-                 alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +60000, pendingIntent);
+                 alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +300000, pendingIntent);
 
                  Log.d("sucess","clicked");
 

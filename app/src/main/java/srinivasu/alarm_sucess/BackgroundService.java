@@ -7,6 +7,7 @@ import android.app.Service;
 import android.app.job.JobParameters;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -109,7 +110,9 @@ public class BackgroundService extends Service {
             // cal.add(Calendar.SECOND, 5);
             // alarmMgr.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
             //alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP,cal.getTimeInMillis(), pendingIntent);
-            alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +60000, pendingIntent);
+            SharedPreferences sharedPreferences = getSharedPreferences("interval",MODE_PRIVATE);
+            int val = Integer.parseInt(sharedPreferences.getString("const",""));
+            alarmMgr.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +val, pendingIntent);
 
         }
 
@@ -120,7 +123,7 @@ public class BackgroundService extends Service {
             Log.d("sending...to...server", "before service calling");
             try {
 
-                sendlatlong_to_server("17.71", "17.71", millisInString);
+                sendlatlong_to_server("18.181", "18.181", millisInString);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -8,24 +8,28 @@
     tools:context="srinivasu.alarm_sucess.MainActivity">
 
     <TextView
+        android:gravity="center"
+        android:layout_marginTop="30dp"
         android:id="@+id/mytext"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="one minute alaram set"
         />
     <TextView
+        android:gravity="center"
         android:layout_marginTop="30dp"
         android:id="@+id/mytext2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="2 minutes alarm set"
         />
     <TextView
+        android:gravity="center"
         android:layout_marginTop="30dp"
         android:id="@+id/mytext3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="5 minutes alarm set"
         />
 
 </LinearLayout>
